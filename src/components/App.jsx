@@ -11,10 +11,10 @@ class App extends Component {
           className="btn btn-success"
           onClick={ this.props.onIncrement }
         >+</button>
-        {/*<button
+        <button
           className="btn btn-success"
           onClick={ this.props.onDecrement }
-        >-</button>*/}
+        >-</button>
       </div>
     )
   }

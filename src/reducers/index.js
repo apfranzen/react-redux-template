@@ -1,4 +1,5 @@
 function reducer(state=0, action) {
+  console.log(action)
   if (action.type === 'INCREMENT') {
     return ++state;
   }
