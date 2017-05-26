@@ -1,19 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
 
-import App from './components/App.jsx'
-import store from './store'
-import increment from './actions'
+/*
+redux
+ */
+const increment = { type: 'INCREMENT' }
+const decrement = { type: 'DECREMENT' }
+const reducer = (state=0, action) => {
+  if (action.type === 'INCREMENT') {
+    return ++state;
+  }
+  if (action.type === 'DECREMENT') {
+    return --state;
+  }
+  return state;
+}
+const store = createStore(reducer);
+console.log('before -> ', store.getState());
+store.dispatch(increment);
+console.log('after -> ', store.getState());
+console.log('before -> ', store.getState());
+store.dispatch(decrement);
+console.log('after -> ', store.getState());
 
-const render = () => {
-  ReactDOM.render(
-    <App
-      value={ store.getState() }
-      onIncrement={ () => store.dispatch(increment)}
-    />,
-    document.getElementById('root')
-  );
-};
+/*
+react component
+ */
+const App = () => {
+  return (
+    <div className="container">
+      <h1>Hello, World!</h1>
+    </div>
+  )
+}
 
-store.subscribe(render);
-render();
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
